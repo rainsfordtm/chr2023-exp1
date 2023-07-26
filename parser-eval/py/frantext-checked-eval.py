@@ -59,7 +59,7 @@ def script(annotator, target_lemma=''):
     # (Evaluation only)
     ###################################################################
     
-    nlp_score = hit.tags['nlp_score']
+    nlp_score = hit.tags.get('nlp_score', '')
     try:
         is_lemma = True if hit.tags['lemma_check'] == 'v' else False
     except:

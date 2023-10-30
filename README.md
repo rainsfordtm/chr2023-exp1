@@ -39,18 +39,21 @@ found in the public domain texts of FRANTEXT in the form of a concordance.
 1. ConMan (first pass)
     + create initial annotation of the relevant features of argument
     structure using part-of-speech tags only.
+        + Annotation script [parser-eval/py/frantext-cqp-annotate.py](parser-eval/py/frantext-cqp-annotate.py)
+        + Results in [parser-eval/csv/00extracted](parser-eval/csv/00extracted)
     + create a CONLL-U file from the concordance ready to be parsed
-    [parser-eval/conllu/00extracted/ftpdrt1-subcorpus1](parser-eval/conllu/00extracted/ftpdrt1-subcorpus1)
+        + Results in [parser-eval/conllu/00extracted](parser-eval/conllu/00extracted)
 1. Manual correction of initial annotation to produce "gold" annotation
-[parser-eval/csv/eval-gold/ftpdrt-subcorpus1](parser-eval/csv/eval-gold/ftpdrt-subcorpus1)
+    + Results in [parser-eval/csv/eval-gold](parser-eval/csv/eval-gold)
 1. Parsing of the CONLL-U file with three different parser-model combinations:
-    + HOPS parser, Sequoia-Flaubert model [parser-eval/conllu/01parsed-hops-sequoia-flaubert/ftpdrt-subcorpus1](parser-eval/conllu/01parsed-hops-sequoia-flaubert/ftpdrt-subcorpus1)
-    + HOPS parser, SRCMF UD (Old French) model [parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only/ftpdrt-subcorpus1](parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only/ftpdrt-subcorpus1)
+    + HOPS parser, Sequoia-Flaubert model [parser-eval/conllu/01parsed-hops-sequoia-flaubert](parser-eval/conllu/01parsed-hops-sequoia-flaubert)
+    + HOPS parser, SRCMF UD (Old French) model [parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only](parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only)
     + UD Pipe parser, GSD model [parser-eval/conllu/01parsed-udpipe-gsd](parser-eval/conllu/01parsed-udpipe-gsd)
 1. ConMan (second pass)
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
     structure using only the parser annotation and save the output.
+        + Results for HOPS parser, Sequoia-Flaubert model
 1. ConMan (third pass)
     + combine the annotated concordance with the gold annotation
     + print a table showing the accuracy of the parser-based annotation
@@ -66,6 +69,10 @@ annotation of the targeted phenomena ("expert queries")
 
 ## 4. Description of files in repository and instructions for replication
 of results.
+
++ ConMan (first pass)
+    + 
+
 
     
 

@@ -53,12 +53,14 @@ found in the public domain texts of FRANTEXT in the form of a concordance.
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
     structure using only the parser annotation and save the output.
+        + Annotation script: [parser-eval/py/frantext-parser-annotate-basic.py](parser-eval/py/frantext-parser-annotate-basic.py)
         + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/01parsed-hops-sequoia-flaubert-basic](parser-eval/csv/01parsed-hops-sequoia-flaubert-basic)
         + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/01parsed-hops-srcmfud-29-basic](parser-eval/csv/01parsed-hops-srcmfud-29-basic)
         + Results for UD pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-basic](parser-eval/csv/01parsed-udpipe-gsd-basic)
 1. ConMan (third pass)
     + combine the annotated concordance with the gold annotation
     + print a table showing the accuracy of the parser-based annotation
+        + Annotation script: [parser-eval/py/frantext-parsed-eval.py](parser-eval/py/frantext-parsed-eval.py)
         + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/02evaluation-hops-sequoia-flaubert-basic/](parser-eval/csv/02evaluation-hops-sequoia-flaubert-basic/)
         + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/02evaluation-hops-srcmfud-29-basic](parser-eval/csv/02evaluation-hops-srcmfud-29-basic)
         + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-basic](parser-eval/csv/01parsed-udpipe-gsd-basic)
@@ -68,22 +70,49 @@ annotation of the targeted phenomena ("expert queries")
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
     structure using the expert query and save the output.
+        + Annotation script: [parser-eval/py/frantext-parser-annotate.py](parser-eval/py/frantext-parser-annotate.py)
         + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/01parsed-hops-sequoia-flaubert-expert](parser-eval/csv/01parsed-hops-sequoia-flaubert-expert)
         + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/01parsed-hops-srcmfud-29-expert](parser-eval/csv/01parsed-hops-srcmfud-29-expert)
         + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-hops-srcmfud-29-expert/](parser-eval/csv/01parsed-hops-srcmfud-29-expert/)
 1. ConMan (fifth pass)
     + combine the annotated concordance with the gold annotation
     + print a table showing the accuracy of the "expert query" based annotation
+        + Annotation script: [parser-eval/py/frantext-parsed-eval.py](parser-eval/py/frantext-parsed-eval.py)
         + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/02evaluation-hops-sequoia-flaubert-expert/](parser-eval/csv/02evaluation-hops-sequoia-flaubert-expert/)
         + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/02evaluation-hops-srcmfud-29-expert](parser-eval/csv/02evaluation-hops-srcmfud-29-expert)
-        + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-expert](parser-eval/csv/01parsed-udpipe-gsd-expert)
+        + Results for UD Pipe parser, GSD model [parser-eval/csv/02evaluation-udpipe-gsd-expert](parser-eval/csv/02evaluation-gsd-expert)
+        
+## 4. Running the annotation scripts
 
-## 4. Description of files in repository and instructions for replication
-of results.
+The annotation scripts are integrated into the Conman software, a 
+version of which is included in the repository. Here's how to use
+the scripts on the data provided in this repository (examples for
+running queries on *entrer* using HOPS Sequoia):
 
-+ ConMan (first pass)
-    + 
+**Pass 2**. First, update the path in [parser-eval/cfg/wf_pass2_entrer.cfg](parser-eval/cfg/wf_pass2_entrer.cfg)
+so that it points to [parser-eval/py/frantext-parser-annotate-basic.py](parser-eval/py/frantext-parser-annotate-basic.py)
+(Conman requires absolute paths to annotation scripts). Then run
+```
+conman-1.0.0/conman.py -s -z -w parser-eval/cfg/wf_pass2_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
+```
 
+**Pass 3**. First, update the path in [parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg](parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg)
+so that it points to [parser-eval/py/frantext-checked-eval.py](parser-eval/py/frantext-checked-eval.py)
+(Conman requires absolute paths to annotation scripts). Then run
+```
+conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-basic/entrer.cnc.gz <OUTPUT_FILE>
+```
 
-    
+**Pass 4** First, update the path in [parser-eval/cfg/wf_pass4_entrer.cfg](parser-eval/cfg/wf_pass4_entrer.cfg)
+so that it points to [parser-eval/py/frantext-parser-annotate.py](parser-eval/py/frantext-parser-annotate.py)
+(Conman requires absolute paths to annotation scripts). Then run
+```
+conman-1.0.0/conman.py -s -z -w parser-eval/cfg/wf_pass4_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
+```
 
+**Pass 5**. First, update the path in [parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg](parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg)
+so that it points to [parser-eval/py/frantext-checked-eval.py](parser-eval/py/frantext-checked-eval.py)
+(Conman requires absolute paths to annotation scripts). Then run
+```
+conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-expert/entrer.cnc.gz <OUTPUT_FILE>
+```

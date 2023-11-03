@@ -1,0 +1,37 @@
+SUMMARY OF ANNOTATION:
+**********************
+lemmaft_correct             3589
+lemmaft_missed               202
+lemmaft_total               3590
+nlp_5                          0
+nlp_5_correct                  0
+nlp_4                       3511
+nlp_4_correct               3511
+nlp_3                        174
+nlp_3_correct                173
+nlp_2                         96
+nlp_2_correct                 95
+nlp_1                          6
+nlp_1_correct                  2
+nlp_0                         98
+nlp_0_correct                 10
+obj_acc_correct             1656
+obj_acc_missed               954
+obj_acc_total               1667
+obj_acc_parser_correct      2423
+obj_acc_parser_missed        187
+obj_acc_parser_total        2488
+loc_correct                 2425
+loc_missed                   753
+loc_total                   2791
+loc_parser_correct          2637
+loc_parser_missed            528
+loc_parser_total            2969
+reflexive_parser_correct     935
+reflexive_parser_missed       52
+reflexive_parser_total       954
+en_clitic_parser_correct      46
+en_clitic_parser_missed        1
+en_clitic_parser_total        49
+hit_correct                 3791
+total_hits                  3885

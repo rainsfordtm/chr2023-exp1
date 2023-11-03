@@ -53,19 +53,30 @@ found in the public domain texts of FRANTEXT in the form of a concordance.
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
     structure using only the parser annotation and save the output.
-        + Results for HOPS parser, Sequoia-Flaubert model
+        + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/01parsed-hops-sequoia-flaubert-basic](parser-eval/csv/01parsed-hops-sequoia-flaubert-basic)
+        + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/01parsed-hops-srcmfud-29-basic](parser-eval/csv/01parsed-hops-srcmfud-29-basic)
+        + Results for UD pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-basic](parser-eval/csv/01parsed-udpipe-gsd-basic)
 1. ConMan (third pass)
     + combine the annotated concordance with the gold annotation
     + print a table showing the accuracy of the parser-based annotation
+        + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/02evaluation-hops-sequoia-flaubert-basic/](parser-eval/csv/02evaluation-hops-sequoia-flaubert-basic/)
+        + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/02evaluation-hops-srcmfud-29-basic](parser-eval/csv/02evaluation-hops-srcmfud-29-basic)
+        + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-basic](parser-eval/csv/01parsed-udpipe-gsd-basic)
 1. Optimize the query script to correct common parser errors and improve
 annotation of the targeted phenomena ("expert queries")
 1. ConMan (fourth pass)
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
     structure using the expert query and save the output.
+        + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/01parsed-hops-sequoia-flaubert-expert](parser-eval/csv/01parsed-hops-sequoia-flaubert-expert)
+        + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/01parsed-hops-srcmfud-29-expert](parser-eval/csv/01parsed-hops-srcmfud-29-expert)
+        + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-hops-srcmfud-29-expert/](parser-eval/csv/01parsed-hops-srcmfud-29-expert/)
 1. ConMan (fifth pass)
     + combine the annotated concordance with the gold annotation
     + print a table showing the accuracy of the "expert query" based annotation
+        + Results for HOPS parser, Sequoia-Flaubert model [parser-eval/csv/02evaluation-hops-sequoia-flaubert-expert/](parser-eval/csv/02evaluation-hops-sequoia-flaubert-expert/)
+        + Results for HOPS parser, SRCMF-UD model [parser-eval/csv/02evaluation-hops-srcmfud-29-expert](parser-eval/csv/02evaluation-hops-srcmfud-29-expert)
+        + Results for UD Pipe parser, GSD model [parser-eval/csv/01parsed-udpipe-gsd-expert](parser-eval/csv/01parsed-udpipe-gsd-expert)
 
 ## 4. Description of files in repository and instructions for replication
 of results.

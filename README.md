@@ -3,7 +3,7 @@ Regnault 2023)
 
 ## 1. Introduction
 
-The parser evaluation in experiment 1 of Rainsford and Regnault (2023)
+The parser evaluation in experiment 1 of [Rainsford and Regnault \(2023\)](#rr23)
 took place in several stages and made use of the Concordance Manager
 (Rainsford 2023) to combine and query annotations. This README
 file summarizes the procedure adopted and the principal files in this
@@ -112,3 +112,10 @@ so that it points to [parser-eval/py/frantext-checked-eval.py](parser-eval/py/fr
 ```
 conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-expert/entrer.cnc.gz <OUTPUT_FILE>
 ```
+
+## References
+
++ <a id="rr232">Rainsford, Thomas and Mathilde Regnault (2023).</a>
+Investigating the reliability of 'expert' queries in an historical corpus.
+Poster presented at *Fourth Conference on Computational Humanities Research
+\(CHR2023\)*, Paris, 6-8 December 2023.

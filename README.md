@@ -5,7 +5,7 @@ Regnault 2023)
 
 The parser evaluation in experiment 1 of [Rainsford and Regnault \(2023\)](#rr23)
 took place in several stages and made use of the Concordance Manager
-(Rainsford 2023) to combine and query annotations. This README
+[\(Rainsford 2023\)](#conman) to combine and query annotations. This README
 file summarizes the procedure adopted and the principal files in this
 repository but does not provide comprehensive documentation of 
 an experimental process which will be further developed in the framework
@@ -14,7 +14,7 @@ of an ongoing project.
 ## 2. Objective
 
 The objective was to produced concordances of two French verbs 
-(*jeter* "to throw" and *entrer* "to enter") containing correct annotation
+(*jeter* 'to throw' and *entrer* 'to enter') containing correct annotation
 of the following features of argument structure:
 + **reflexive**: (y or n) presence or absence of a reflexive pronoun
 + **en_clitic**: (y or n) presence or absence of a *en* clitic pronoun
@@ -35,7 +35,8 @@ parser.
 ## 3. Procedure
 
 1. Extraction of all the occurrences of the verbs *jeter* and *entrer*
-found in the public domain texts of FRANTEXT in the form of a concordance.
+found in the public domain texts of [FRANTEXT](https://www.frantext.fr/)
+in the form of a concordance.
 1. ConMan (first pass)
     + create initial annotation of the relevant features of argument
     structure using part-of-speech tags only.
@@ -46,9 +47,10 @@ found in the public domain texts of FRANTEXT in the form of a concordance.
 1. Manual correction of initial annotation to produce "gold" annotation
     + Results in [parser-eval/csv/eval-gold](parser-eval/csv/eval-gold)
 1. Parsing of the CONLL-U file with three different parser-model combinations:
-    + HOPS parser, Sequoia-Flaubert model [parser-eval/conllu/01parsed-hops-sequoia-flaubert](parser-eval/conllu/01parsed-hops-sequoia-flaubert)
-    + HOPS parser, SRCMF UD (Old French) model [parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only](parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only)
-    + UD Pipe parser, GSD model [parser-eval/conllu/01parsed-udpipe-gsd](parser-eval/conllu/01parsed-udpipe-gsd)
+    + HOPS parser [\(Grobol and Crabbé 2021\)](#hops), Sequoia-Flaubert model [\(Grobol et al. 2022\)](#hops-model)
+    [parser-eval/conllu/01parsed-hops-sequoia-flaubert](parser-eval/conllu/01parsed-hops-sequoia-flaubert)
+    + HOPS parser, SRCMF UD (Old French) model [\(Grobol et al. 2022\)](#hops-model) [parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only](parser-eval/conllu/01parsed-hops-srcmfud-29-bertrade-base-8192-32e-only)
+    + UD Pipe parser, GSD model [Straka \(2018\)](#udpipe) [parser-eval/conllu/01parsed-udpipe-gsd](parser-eval/conllu/01parsed-udpipe-gsd)
 1. ConMan (second pass)
     + recombine the parsed CONLL-U file with the original concordance
     + annotate the concordance for the relevant aspects of argument
@@ -115,7 +117,30 @@ conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-ev
 
 ## References
 
-+ <a id="rr232">Rainsford, Thomas and Mathilde Regnault (2023).</a>
++ <a id="hops">Grobol, Loïc and Benoît Crabbé (2021).</a>
+Analyse en dépendances du français avec des plongements contextualisés.
+*Actes de la 28ème Conférence sur le Traitement Automatique des Langues Naturelles
+\(TALN-RÉCITAL 2021\)*.
+[https://hal.archives-ouvertes.fr/hal-03223424/file/HOPS_final.pdf](https://hal.archives-ouvertes.fr/hal-03223424/file/HOPS_final.pdf)
+
++ <a id="hops-model">Grobol, Loïc, Mathilde Regnault, Pedro Javier Ortiz Suárez, Benoît Sagot, Laurent Romary, Benoît Crabbé (2022).</a>
+Using Contextual Embeddings to Parse Old French.
+*Proceedings of the Thirteenth Language Resources and Evaluation Conference \(LREC 2022\)*,
+Marseille, France, 2022. [https://hal.science/hal-03736840](https://hal.science/hal-03736840)
+
++ <a id="conman">Rainsford, Thomas (2023).</a>
+*Concordance Manager \(ConMan\)* (Version 1.0.0) \[Computer Software\].
+[https://github.com/rainsfordtm/conman/releases/tag/v1.0.0](https://github.com/rainsfordtm/conman/releases/tag/v1.0.0).
+
++ <a id="rr23">Rainsford, Thomas and Mathilde Regnault (2023).</a>
 Investigating the reliability of 'expert' queries in an historical corpus.
 Poster presented at *Fourth Conference on Computational Humanities Research
 \(CHR2023\)*, Paris, 6-8 December 2023.
+
++ <a id="udpipe">Straka, Milan (2018).</a>
+UDPipe 2.0 Prototype at CoNLL 2018 UD Shared Task. 
+*Proceedings of the CoNLL 2018 Shared Task: Multilingual Parsing from
+Raw Text to Universal Dependencies*.
+Brussels: Association for Computational Linguistics, p. 197-207.
+[DOI: 10.18653/v1/K18-2020](http://dx.doi.org/10.18653/v1/K18-2020)
+

@@ -69,17 +69,20 @@ plot.precision.recall <- function(df, title) {
   ) +
   geom_bar(  # histogram
     stat="identity", # raw data
-    position="dodge" # bars next to each other
+    position="dodge", # bars next to each other
+    show.legend = FALSE # don't show the legend
   ) + 
   geom_text( # Add values
     aes(label=round(value, digits=4)), # use values and round to 4sf.
     position=position_dodge(width=1), # dodge like the bars
     vjust=-0.25, # move up a bit
-    size=2 # make it smaller
+    size=3 # make it smaller
   ) +
-  ylim(0, 1) + # Scale from 0.5 to 1
+  ylim(0, 1.05) + # Scale from 0 to 1.05 (to avoid clipping geom_text)
   theme_minimal() + # Basic theme
   scale_x_discrete(guide = guide_axis(n.dodge=2)) + # Stop x-axis labels overlapping
+  theme(legend.position="bottom") + # Put legend on the bottom
+  xlab("Parser and model") + # Relabel x-axis
   labs(title=title)
   return(qwe)
 }

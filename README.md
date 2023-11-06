@@ -82,37 +82,40 @@ in the form of a concordance.
         
 ## 4. Running the annotation scripts
 
-The annotation scripts are integrated into the Conman software, a 
-version of which is included in the repository. Here's how to use
-the scripts on the data provided in this repository (examples for
-running queries on *entrer* using HOPS Sequoia):
+The annotation scripts are integrated into the ConMan software
+which can be installed from the git repository:
+```
+git clone https://github.com/rainsfordtm/conman.git
+```
+Here's how to use the scripts on the data provided in this repository
+(examples for running queries on *entrer* using HOPS Sequoia):
 
 **Pass 2**. First, update the path in [parser-eval/cfg/wf_pass2_entrer.cfg](parser-eval/cfg/wf_pass2_entrer.cfg)
 so that it points to [parser-eval/py/frantext-parser-annotate-basic.py](parser-eval/py/frantext-parser-annotate-basic.py)
 (Conman requires absolute paths to annotation scripts). Then run
 ```
-conman-1.0.0/conman.py -s -z -w parser-eval/cfg/wf_pass2_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
+<CONMAN_PATH>/conman.py -s -z -w parser-eval/cfg/wf_pass2_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
 ```
 
 **Pass 3**. First, update the path in [parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg](parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg)
 so that it points to [parser-eval/py/frantext-checked-eval.py](parser-eval/py/frantext-checked-eval.py)
 (Conman requires absolute paths to annotation scripts). Then run
 ```
-conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-basic/entrer.cnc.gz <OUTPUT_FILE>
+<CONMAN_PATH>/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-basic/entrer.cnc.gz <OUTPUT_FILE>
 ```
 
 **Pass 4** First, update the path in [parser-eval/cfg/wf_pass4_entrer.cfg](parser-eval/cfg/wf_pass4_entrer.cfg)
 so that it points to [parser-eval/py/frantext-parser-annotate.py](parser-eval/py/frantext-parser-annotate.py)
 (Conman requires absolute paths to annotation scripts). Then run
 ```
-conman-1.0.0/conman.py -s -z -w parser-eval/cfg/wf_pass4_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
+<CONMAN_PATH>/conman.py -s -z -w parser-eval/cfg/wf_pass4_entrer.cfg -m parser-eval/conllu/01parsed-hops-sequoia-flaubert/entrer.conllu parser-eval/cnc/00extracted/entrer.cnc.gz <OUTPUT_FILE>
 ```
 
 **Pass 5**. First, update the path in [parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg](parser-eval/cfg/wf_pass3_pass5_eval_entrer.cfg)
 so that it points to [parser-eval/py/frantext-checked-eval.py](parser-eval/py/frantext-checked-eval.py)
 (Conman requires absolute paths to annotation scripts). Then run
 ```
-conman-1.0.0/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-expert/entrer.cnc.gz <OUTPUT_FILE>
+<CONMAN_PATH>/conman.py -w parser-eval/cfg/wf_pass3_pass5_entrer.cfg -m parser-eval/csv/eval-gold/entrer.csv parser-eval/cnc/01parsed-hops-sequoia-flaubert-expert/entrer.cnc.gz <OUTPUT_FILE>
 ```
 
 ## References

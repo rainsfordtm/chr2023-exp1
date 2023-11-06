@@ -7,7 +7,7 @@
 # the values to give an overall score
 
 library(ggplot2)
-library(cowplot)
+library(gridExtra)
 
 get.precision.recall <- function(ncorrect, nmissed, ntotal) {
   precision = sum(ncorrect) / sum(ntotal)
@@ -74,10 +74,12 @@ plot.precision.recall <- function(df, title) {
   geom_text( # Add values
     aes(label=round(value, digits=4)), # use values and round to 4sf.
     position=position_dodge(width=1), # dodge like the bars
-    vjust=-0.25 # move up a bit
+    vjust=-0.25, # move up a bit
+    size=2 # make it smaller
   ) +
   ylim(0, 1) + # Scale from 0.5 to 1
   theme_minimal() + # Basic theme
+  scale_x_discrete(guide = guide_axis(n.dodge=2)) + # Stop x-axis labels overlapping
   labs(title=title)
   return(qwe)
 }
@@ -90,8 +92,10 @@ x2 <- plot.precision.recall(pr.all[pr.all$phenomenon == "loc_parser",], "Locativ
 x3 <- plot.precision.recall(pr.all[pr.all$phenomenon == "reflexive_parser",], "Reflexive")
 x4 <- plot.precision.recall(pr.all[pr.all$phenomenon == "en_clitic_parser",], "Has 'en' clitic")
 
-plot_grid(
+qwe <- grid.arrange(
   x1, x2, x3, x4,
   ncol=2,
   nrow=2
 )
+
+ggsave("figure.png", qwe, scale=2)
